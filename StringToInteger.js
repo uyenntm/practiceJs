@@ -13,20 +13,20 @@ s7 =" ++1" //0
  * @return {number}
  */
  var myAtoi = function(s) {
-    if(s.length==0 || s.length>200) return 0;
+    if(s.length===0 || s.length>200) return 0;
     let  sign ='', minus = false, counter = 0, number =[], tmp ='';
     s = s.trim("");
     
     while(counter < s.length){
         tmp = s.charAt(counter);
        //have sign and not  number  ignore
-        if(sign!=''&&sign!=tmp&& !isNumber(tmp)) break;
+        if(sign!==''&&sign!=tmp&& !isNumber(tmp)) break;
         //no sign and not number ignore
         else if(!isSign(tmp)&&!isNumber(tmp)) break;
         //have number and  then  sign
         else if(number.length >0 && isSign(tmp)) break;
         //have  sign and then sign
-        else if(sign!=""&&isSign(tmp)) break;
+        else if(sign!==""&&isSign(tmp)) break;
         if(tmp =='-'||tmp =='+') sign = tmp;
         if(tmp=='-') minus = true;
         if(tmp!=" " && isNumber(tmp)){
