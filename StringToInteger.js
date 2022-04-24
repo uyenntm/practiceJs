@@ -6,6 +6,7 @@ s4 ="+1";//1
 s5 = "+-12";//0
 s6 = "00000-42a1234"; //0
 s7 =" ++1" //0
+s8 = "  12    4";//12
 
 //-------------Implementation-----------------
 /**
@@ -14,7 +15,7 @@ s7 =" ++1" //0
  */
  var myAtoi = function(s) {
     if(s.length===0 || s.length>200) return 0;
-    let  sign ='', minus = false, counter = 0, number =[], tmp ='';
+    let  sign ='', minus = 1, counter = 0, number =[], tmp ='';
     s = s.trim("");
     
     while(counter < s.length){
@@ -28,21 +29,21 @@ s7 =" ++1" //0
         //have  sign and then sign
         else if(sign!==""&&isSign(tmp)) break;
         if(tmp =='-'||tmp =='+') sign = tmp;
-        if(tmp=='-') minus = true;
+        if(tmp=='-') minus = -1;
         if(tmp!=" " && isNumber(tmp)){
             number.push(tmp);
         }
         counter++;
     }
    
-    let result = Number(number.join(""));
-    if(minus)  result *=-1;
-    if(result >( Math.pow(2,31)-1)) result = Math.pow(2,31)-1;
-    if(result < Math.pow(-2,31)) result = Math.pow(-2,31);
+    let result = minus *Number(number.join(""));
+    const INT_MAX = Math.pow(2,31) - 1;
+    const INT_MIN = -Math.pow(2, 31);
+    if(result >INT_MAX) result = INT_MAX;
+    if(result < INT_MIN) result = INT_MIN;
     return result;
 };
 const isNumber = n => /\d+/.test(n);
-const isAlpha = n =>/[a-zA-Z]/.test(n);
 const isSign =  n=>/[-+]/.test(n);
 ///Testing-----------------
 //console.log(myAtoi(s));
@@ -52,4 +53,5 @@ const isSign =  n=>/[-+]/.test(n);
 // console.log(myAtoi(s4));
  //console.log(myAtoi(s5));
  //console.log(myAtoi(s6));
- console.log(myAtoi(s7));
+ //console.log(myAtoi(s7));
+ console.log(myAtoi(s8));
