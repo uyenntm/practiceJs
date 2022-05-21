@@ -1,3 +1,5 @@
+import * as myAtoi from "./StringToInteger1";
+
 s = "42"; //42
 s1 = "   -42" //-42
 s2 = "words and 987"; //0
@@ -43,15 +45,19 @@ s8 = "  12    4";//12
     if(result < INT_MIN) result = INT_MIN;
     return result;
 };
+
+
 const isNumber = n => /\d+/.test(n);
 const isSign =  n=>/[-+]/.test(n);
+
+
 ///Testing-----------------
-//console.log(myAtoi(s));
-//console.log(myAtoi(s1));
- //console.log(myAtoi(s2));
-// console.log(myAtoi(s3));
-// console.log(myAtoi(s4));
- //console.log(myAtoi(s5));
- //console.log(myAtoi(s6));
- //console.log(myAtoi(s7));
+console.log(myAtoi(s));
+console.log(myAtoi(s1));
+ console.log(myAtoi(s2));
+console.log(myAtoi(s3));
+console.log(myAtoi(s4));
+ console.log(myAtoi(s5));
+ console.log(myAtoi(s6));
+ console.log(myAtoi(s7));
  console.log(myAtoi(s8));
